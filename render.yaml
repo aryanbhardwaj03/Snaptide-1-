@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: any-video-download
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python server.py"
+    autoDeploy: true
+    healthCheckPath: /api/health
+    envVars:
+      - key: AVD_ALLOW_BROWSER_COOKIES
+        value: "0"
+    aptPackages:
+      - ffmpeg

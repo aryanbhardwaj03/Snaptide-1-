@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snaptide</title>
+    <link rel="stylesheet" href="styles.css?v=10" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace">
+        <div class="workspace-head">
+          <div class="brand">
+            <div class="brand-top">
+              <span class="brand-note">You can download any video by pasting URL</span>
+            </div>
+            <h1>Snaptide</h1>
+            <p class="brand-sub">Paste a supported public video link and save it in clean quality.</p>
+          </div>
+          <div class="hero-actions">
+            <div class="hero-stats" aria-label="Download defaults">
+              <span>1080p default</span>
+            </div>
+            <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false">
+              Light theme
+            </button>
+          </div>
+        </div>
+
+        <form id="lookupForm" class="lookup">
+          <label for="videoUrl">Video URL</label>
+          <div class="url-row">
+            <input
+              id="videoUrl"
+              name="videoUrl"
+              type="url"
+              placeholder="Paste link"
+              autocomplete="off"
+              required
+            />
+            <button type="submit" id="analyzeBtn">Analyze</button>
+          </div>
+        </form>
+
+        <section id="result" class="result is-hidden">
+          <div class="preview">
+            <img id="thumbnail" alt="" />
+            <div class="video-meta">
+              <p id="sourceName"></p>
+              <h2 id="title"></h2>
+              <p id="details"></p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <aside class="side-panel">
+        <section class="download-panel">
+          <div class="panel-head">
+            <h2>Download Options</h2>
+            <p id="qualityHint">Analyze a video to unlock quality choices.</p>
+          </div>
+
+          <div id="qualityList" class="quality-list" aria-label="Video quality choices">
+            <p class="empty-state">1080p will be selected by default.</p>
+          </div>
+
+          <label class="toggle">
+            <input id="audioOnly" type="checkbox" />
+            <span>Audio only MP3</span>
+          </label>
+
+          <button id="downloadBtn" type="button" disabled>Download 1080p</button>
+
+          <div id="downloadProgress" class="download-progress" aria-live="polite">
+            <div class="progress-topline">
+              <span id="downloadState">Ready</span>
+              <strong id="downloadPercent">0%</strong>
+            </div>
+            <div class="progress-track" aria-hidden="true">
+              <span id="progressFill"></span>
+            </div>
+            <dl class="file-facts">
+              <div>
+                <dt>File</dt>
+                <dd id="downloadFileName">Waiting for download</dd>
+              </div>
+              <div>
+                <dt>Size</dt>
+                <dd id="downloadFileSize">--</dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+
+      </aside>
+    </main>
+
+    <script src="app.js?v=10"></script>
+  </body>
+</html>
